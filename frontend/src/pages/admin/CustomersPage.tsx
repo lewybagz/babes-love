@@ -82,7 +82,7 @@ export const CustomersPage = () => {
             Customers
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mt-1">
-            Manage and view details about your store's customers.
+            Manage and view details about your store's customers
           </p>
         </div>
 
