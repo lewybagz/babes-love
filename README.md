@@ -23,7 +23,7 @@ Think of the project like a restaurant:
 2.  **Backend (The Kitchen & Office):**
     - This is the hidden part that makes everything work (`/backend` folder in the code).
     - It handles storing data (products, orders, customer info), processing payments (though actual processing is via Stripe/etc.), and managing the logic behind the scenes.
-    - You won't directly see this part, but the Admin Dashboard talks to it constantly.
+    - You won't directly see this part, but the Admin Dashboard talks to it constantly
 
 ## Key Admin Features
 
