@@ -1,54 +1,94 @@
-# React + TypeScript + Vite
+# Babes Love E-Commerce Platform (Admin Guide)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+Welcome to the Babes Love store management system! This guide is for the admin team to understand the project and how to get it running on your computers. This system was developed by Lewy to help manage our online store for handcrafted hats and apparel.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It includes:
 
-## Expanding the ESLint configuration
+1.  The **Storefront**: The public website that customers visit to browse and buy products.
+2.  The **Admin Dashboard**: A private area for our team to manage products, orders, customers, marketing, and see how the store is performing.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Overview
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Think of the project like a restaurant:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1.  **Frontend (The Dining Area & Menu):**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+    - This is the actual website (`/frontend` folder in the code).
+    - It's what customers see and interact with – the homepage, product pages, shopping cart, etc.
+    - It's built to look good and be easy to use.
+    - It also includes the **Admin Dashboard** interface you'll use.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+2.  **Backend (The Kitchen & Office):**
+    - This is the hidden part that makes everything work (`/backend` folder in the code).
+    - It handles storing data (products, orders, customer info), processing payments (though actual processing is via Stripe/etc.), and managing the logic behind the scenes.
+    - You won't directly see this part, but the Admin Dashboard talks to it constantly.
+
+## Key Admin Features
+
+The Admin Dashboard allows you to:
+
+- **View Dashboard Overview:** Get a quick snapshot of key store information.
+- **Manage Products:** Add new products, edit existing ones (update names, prices, descriptions, images), and mark them as available or unavailable.
+- **Manage Orders:** View incoming customer orders, check their details, and update their status (e.g., from 'Processing' to 'Shipped').
+- **Manage Customers:** (Coming Soon) View customer information and order history.
+- **View Payments:** (Coming Soon) See a history of transactions.
+- **Analytics:** View charts and reports on sales performance, customer activity, and top products.
+- **Manage Marketing Campaigns:** Create, view, edit, and delete marketing campaigns (like sales or promotions). View analytics on campaign performance.
+- **Configure Settings:** (Coming Soon) Adjust store-wide settings.
+
+## Getting Started (Running the Project Locally)
+
+To run the store and admin dashboard on your own computer (e.g., for testing or content updates), follow these steps. You might need Lewy's help the first time.
+
+**Prerequisites:**
+
+- **Node.js and npm:** This is a technical tool needed to run the project. Lewy can help ensure it's installed on your machine.
+
+**Setup Steps:**
+
+1.  **Get the Code:** Make sure you have the latest project code, likely through GitHub Desktop or by asking Lewy.
+2.  **Configuration Files (IMPORTANT):** This project needs specific secret files to connect to services like databases or payment systems. These are **not** stored in the main codebase for security.
+    - Ask Lewy for the `serviceAccountKey.json` file needed for the backend. Place it inside the `/backend` folder.
+    - Ask Lewy for the `.env` file needed for the `/backend` folder. This contains secret keys.
+    - Ask Lewy for the `.env` file needed for the `/frontend` folder. This might contain different keys for the website part.
+    - _(Note: There might be `.env.example` files included as templates, but you need the actual `.env` files with the real keys from Lewy)._
+3.  **Install Dependencies (Software Libraries):** You need to do this for _both_ the frontend and backend separately. Open a terminal or command prompt window:
+    - Navigate to the backend folder: `cd path\to\project\babeslove\backend` (Replace `path\to\project` with the actual path on your computer)
+    - Run: `npm install`
+    - Navigate to the frontend folder: `cd ..\frontend` (Goes up one level and then into frontend)
+    - Run: `npm install`
+
+**Running the Project:**
+
+You need to start _both_ the backend and the frontend separately. This requires **two** terminal/command prompt windows.
+
+1.  **Start the Backend:**
+
+    - In one terminal window, navigate to the backend folder: `cd path\to\project\babeslove\backend`
+    - Run: `npm start` (or `npm run dev` if Lewy specifies)
+    - Leave this window running. You'll see log messages.
+
+2.  **Start the Frontend:**
+
+    - Open a **second** terminal window.
+    - Navigate to the frontend folder: `cd path\to\project\babeslove\frontend`
+    - Run: `npm run dev`
+    - This will usually output a local web address.
+
+3.  **Access the Store/Admin:**
+    - Open your web browser (like Chrome or Edge).
+    - Go to the address shown by the frontend terminal – usually `http://localhost:5173`.
+    - You should see the storefront.
+    - To access the admin dashboard, log in with an admin account (ask Lewy for details) and navigate to `/admin` (i.e., `http://localhost:5173/admin`).
+
+## Important Configuration Files (`.env`, `serviceAccountKey.json`)
+
+- These files contain sensitive information like API keys (passwords for services), database connections, and secret credentials.
+- **Never share these files publicly or commit them to GitHub.** The `.gitignore` file (configured by Lewy) helps prevent accidental commits.
+- If you need to run the project, always get the latest, correct versions of these files directly from Lewy.
+
+## Need Help?
+
+If you encounter any issues with setup, running the project, or understanding features, please contact **Lewy**.
