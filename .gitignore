@@ -1,0 +1,61 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.env
+
+# Node / General
+node_modules/
+npm-debug.log*
+yarn-error.log*
+*.log
+.env
+.env.*
+!/.env.example
+
+# Frontend specific (ensure paths are relative to root or use /frontend/)
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+/frontend/.env
+/frontend/.env.*
+!/frontend/.env.example
+# ... (add other frontend rules you had, prefixing with /frontend/ if needed)
+
+# Backend specific (ensure paths are relative to root or use /backend/)
+/backend/node_modules/
+/backend/dist/  # Or /backend/build/ depending on your setup
+/backend/.env
+/backend/.env.*
+/backend/.env.example
+/backend/serviceAccountKey.json
+!/backend/.env.example
+# ... (add any other backend-specific files/folders)
+
+# OS / Editor specific
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
